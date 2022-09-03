@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <!----------------------------CSS------------------------------------->
+    <style>
+      table {
+        background-color: #254554;
+        border-radius: 0px 0px 7px 7px;
+        width: 300px;
+        height: 300px;
+      }
+
+      .input {
+        color: rgb(237, 231, 243);
+        background-color: rgb(176, 106, 241);
+        font-size: 1.5rem;
+        padding: 16px;
+        margin: 1px;
+        width: 2.8em;
+        cursor: pointer;
+        transition-duration: 150ms;
+      }
+      .input:hover{
+        transform: scale(1.15);
+      }
+
+      .operator {
+        color: rgb(176, 106, 241);
+        background: rgb(237, 231, 243);
+      }
+
+      .display {
+        background-color: rgb(237, 231, 243);
+        font-size: 1.5rem;
+        width: 296px;
+        height: 70px;
+        border: 2px solid #254554;
+        border-radius: 7px 7px 0px 0px; /* applying border radius to top-left and top-right corners */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ---------------------HTML------------------------------- -->
+    <h3 align="center">CALCULATOR</h3>
+    <div class="container" align="center">
+      <input type="text" class="display" id="display" />
+      <table>
+        <tr>
+          <td colspan="2">
+            <button class="input" style="width: 100%" onclick="inputs('AC')">
+              AC
+            </button>
+          </td>
+          <td><button class="input" onclick="inputs('C')">C</button></td>
+          <td>
+            <button class="input operator" onclick="inputs('%')">%</button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="input" onclick="inputs('9')">9</button></td>
+          <td><button class="input" onclick="inputs('8')">8</button></td>
+          <td><button class="input" onclick="inputs('7')">7</button></td>
+          <td>
+            <button class="input operator" onclick="inputs('+')">+</button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="input" onclick="inputs('6')">6</button></td>
+          <td><button class="input" onclick="inputs('5')">5</button></td>
+          <td><button class="input" onclick="inputs('4')">4</button></td>
+          <td>
+            <button class="input operator" onclick="inputs('-')">-</button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="input" onclick="inputs('3')">3</button></td>
+          <td><button class="input" onclick="inputs('2')">2</button></td>
+          <td><button class="input" onclick="inputs('1')">1</button></td>
+          <td>
+            <button class="input operator" onclick="inputs('*')">*</button>
+          </td>
+        </tr>
+        <tr>
+          <td><button class="input" onclick="inputs('0')">0</button></td>
+          <td><button class="input" onclick="inputs('.')">.</button></td>
+          <td><button class="input" onclick="inputs('=')">=</button></td>
+          <td>
+            <button class="input operator" onclick="inputs('/')">/</button>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <!-- --------------------JAVASCRIPT----------------------------- -->
+  <script>
+    //input type text to display output
+    var display = document.getElementById("display");
+
+    //onclick involks this function & parses a char
+    //a is same as input.value
+    function inputs(a) {
+      if (a == "AC") {
+        display.value = "";
+      } else if (a == "C") {
+        display.value = display.value.substr(0, display.value.length - 1);
+      } else if (a == "=") {
+        display.value = eval(display.value);
+      } else {
+        display.value += a;
+      }
+    }
+  </script>
+</html>
